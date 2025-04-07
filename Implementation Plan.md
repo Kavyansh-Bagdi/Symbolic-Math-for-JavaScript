@@ -1,5 +1,8 @@
+# Implementation Plan
+
 >I am still refining the implementation plan and exploring additional options to establish a robust foundation for symbolic mathematics.
-# Lexer 
+
+## Lexer 
 
 List of token that this Lexer will supports
 
@@ -47,7 +50,7 @@ Tokens:
 
 Result: x * sin(x)
 ```
-# Parser
+## Parser
 
 Implementing a Top-Down (Recursive Descent) & Operator Precedence Parser.
 **Context Free Grammar**
@@ -62,40 +65,40 @@ Atom →  NUM
 		| ( Expr )
 		| Atom Atom
 ```
-# Expression API
+## Expression API
 
 following are the functionalities that will be implemented.
 
-1. expr()
-	convert the given string into expression.
+#### 1. expr()
+convert the given string into expression.
 ```JavaScript
 >> expr('2x + -sin(y)')
 2*x + (-sin(y))
 ```
 
-2. subs()
-	substitute value of variable in given expression and evaluate that.
+#### 2. subs()
+substitute value of variable in given expression and evaluate that.
 ```JavaScript
 >> expr('sin(x)^2 + cos(x)^2').subs('x', 1)
 1
 ```
 
-3. expand()
-	expand the given expression.
-	```JavaScript
+#### 3. expand()
+expand the given expression.
+```JavaScript
 >> expr('sin(2x) + x(2y+3z)').expand() 
 2*sin(x)*cos(x) + 2*x*y + 3*x*z
 ```
 
-4. factor()
-	return the factor of given expression.
-	```JavaScript
+#### 4. factor() 
+return the factor of given expression.
+```JavaScript
 >> expr('x^2 + 3*x + 2').factor()
 (x + 1)*(x + 2)
 ```
 
-5. simplify()
-	```JavaScript
+#### 5. simplify()
+```JavaScript
 >> expr('(2 * 9 + 10)x').simplify()
 28*x
 ```
@@ -156,7 +159,7 @@ following are the functionalities that will be implemented.
 	- `abs(x)**2` → `x**2` (if x is real)
 	- `x - x` → `0`
 
-# Future Work (Post GSOC)
+## Future Work (Post GSOC)
 
 - Add support for **Equation API**
 - Matrix expressions and operations
